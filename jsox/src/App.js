@@ -1,4 +1,4 @@
 
-export function helloName(name){
-    return <h1>Hello, {name}</h1>
+export function sum(a, b){
+    return <h2>The sum is: {a + b}</h2>
 }

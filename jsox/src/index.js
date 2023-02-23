@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { helloName } from "./App"
+import { sum } from "./App"
 
 const root = createRoot(document.getElementById("root"))
-root.render(helloName("Matteo"))
+root.render(sum(11, 22))
