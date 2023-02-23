@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { hello } from "./App"
+import { helloName } from "./App"
 
 const root = createRoot(document.getElementById("root"))
-root.render(hello)
+root.render(helloName("Matteo"))
