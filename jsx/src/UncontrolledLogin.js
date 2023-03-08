@@ -23,6 +23,7 @@ export class UncontrolledLogin extends React.Component {
 
     componentDidMount() {
         this.controlButton()
+        this._form.current.elements.username.focus()
     }
 
 
@@ -30,7 +31,7 @@ export class UncontrolledLogin extends React.Component {
         return (
             <form ref={this._form}>
                 <for>Username:</for>
-                <input type="text" name="username" onChange={this.controlButton} />
+                <input type="text" name="username" onChange={this.controlButton}/>
                 <for>Password:</for>
                 <input type="password" name="password" onChange={this.controlButton} />
                 <for>Remember:</for>
