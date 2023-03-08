@@ -1,5 +1,5 @@
 import React from "react";
-import { Login } from "./Login";
+import { UncontrolledLogin } from "./UncontrolledLogin";
 
 export class App extends React.Component{
     onlogin(data){
@@ -8,7 +8,7 @@ export class App extends React.Component{
     render(){
         return (
             <div>
-                <Login onlogin={this.onlogin}/>
+                <UncontrolledLogin onlogin={this.onlogin}/>
             </div>
         )
     }
