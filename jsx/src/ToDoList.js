@@ -26,13 +26,20 @@ export class ToDoList extends React.Component{
         })
     }
 
+    handleRemove = (event) => {
+        event.target.parentNode.remove()
+    }
+
 
     render(){
         return (
             <div>
                 <ul>
                     {this.state.items.map((item, index) => {
-                        return <li key={index}>{item}</li>
+                        return <li key={index}>
+                            {item}
+                            <button onClick={this.handleRemove}>Remove</button>
+                            </li>
                     })}
                 </ul>
                 <input ref={this._input} type="text" />
