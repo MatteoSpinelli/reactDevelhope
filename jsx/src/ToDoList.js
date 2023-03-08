@@ -26,8 +26,14 @@ export class ToDoList extends React.Component{
         })
     }
 
-    handleRemove = (event) => {
-        event.target.parentNode.remove()
+    handleRemove = (index) => {
+        this.setState((state) => {
+            state.items.splice(index, 1)
+            console.log(state)
+            return {
+                items: state.items
+            }
+        })
     }
 
 
@@ -38,7 +44,9 @@ export class ToDoList extends React.Component{
                     {this.state.items.map((item, index) => {
                         return <li key={index}>
                             {item}
-                            <button onClick={this.handleRemove}>Remove</button>
+                            <button onClick={() => {
+                                this.handleRemove(index)
+                            }}>Remove</button>
                             </li>
                     })}
                 </ul>
