@@ -36,6 +36,10 @@ export class Login extends React.Component{
                         event.preventDefault()
                         this.props.onlogin(this.state)
                     }
+                } style={
+                    {
+                        backgroundColor: this.state.password.length <= 8 ? "red": "green"
+                    }
                 }>Login</button>
             </form>
         )
