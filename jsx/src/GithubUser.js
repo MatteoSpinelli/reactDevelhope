@@ -1,19 +1,7 @@
-import { useEffect, useState } from "react"
+import { useGithubUser } from "./useGithubUser"
 
 export function GithubUser({ username }){
-    let [data, setData] = useState({})
-
-    async function fetchDataGit(username){
-        const res = await fetch(`https://api.github.com/users/${username}`)
-        if (res.status === 200){
-            const json = await res.json()
-            setData(json)
-        }
-    }
-
-    useEffect(() => {
-        fetchDataGit(username)
-    }, [username])
+    const data = useGithubUser(username)
 
     return (
         <div>
