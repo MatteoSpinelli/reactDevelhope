@@ -1,1 +1,1 @@
-Create an index.css file and import it within the index.js file. Add a .welcome class to the Welcome component that changes its background color and adds a border.
+Rewrite the ClickCounter component from Events 01 as a function component, and use the useState hook to track the state of the counter.
