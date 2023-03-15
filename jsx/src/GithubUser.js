@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 export function GithubUser({ username }){
-    let [data, setData] = useState(null)
+    let [data, setData] = useState({})
 
     async function fetchDataGit(username){
         const res = await fetch(`https://api.github.com/users/${username}`)
