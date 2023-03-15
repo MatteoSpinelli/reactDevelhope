@@ -2,7 +2,6 @@ import React from "react";
 import { Hello } from "./Hello"
 import { Welcome } from "./Welcome";
 import { Counter } from "./Counter";
-import { GithubUserList } from "./GithubUserList";
 
 export class App extends React.Component{
     render(){
@@ -10,8 +9,7 @@ export class App extends React.Component{
             <div>
                 <Hello />
                 <Welcome name="John" age="21" />
-                <Counter />
-                <GithubUserList />
+                <Counter initialValue = {15}/>
             </div>
         )
     }
