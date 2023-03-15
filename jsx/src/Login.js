@@ -1,43 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
-export class Login extends React.Component{
-
-    state = {
+export function Login({ onlogin }) {
+    let [data, setData] = useState({
         username: "",
         password: "",
-        remember: false
-    }
+        remember: ""
+    })
 
-    handleChange = (event) => {
-        const name = event.target.name
-        const value = event.target.type === "checkbox" ? event.target.checked : event.target.value
-        this.setState({
-            [name]: value
+    function handleChange(evt){
+        const { name, value, type, checked } = evt.target
+        setData((data) => {
+            return {
+                ...data,
+                [name]: type === "checkbox" ? checked : value
+            }
         })
     }
 
-    controlButton = () => {
-        return !(this.state.username && this.state.password)
+    function controlButton(){
+        return !(data.username && data.password)
     }
 
-
-    render(){
-        return (
-            <form>
-                <for>Username:</for>
-                <input type="text" name = "username" value={this.state.username} onChange={this.handleChange}/>
-                <for>Password:</for>
-                <input type="password" name = "password" value={this.state.password} onChange={this.handleChange}/>
-                <for>Remember:</for>
-                <input type="checkbox" name = "remember" checked={this.state.remember} onChange={this.handleChange}/>
-                <br/>
-                <button disabled={this.controlButton()} onClick={
-                    (event) => {
-                        event.preventDefault()
-                        this.props.onlogin(this.state)
-                    }
-                }>Login</button>
-            </form>
-        )
-    }
+    return (
+        <form>
+            <for>Username:</for>
+            <input type="text" name="username" value={data.username} onChange={handleChange} />
+            <for>Password:</for>
+            <input type="password" name="password" value={data.password} onChange={handleChange} />
+            <for>Remember:</for>
+            <input type="checkbox" name="remember" checked={data.remember} onChange={handleChange} />
+            <br />
+            <button disabled={controlButton()} onClick={
+                (event) => {
+                    event.preventDefault()
+                    onlogin(data)
+                }
+            }>Login</button>
+        </form>
+    )
 }
+
