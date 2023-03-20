@@ -5,7 +5,7 @@ export function Form() {
     return (
         <form>
             <input type="text" name="username" value={username} onChange={handleChange}/>
-            <input type="text" name="password" value={password} onChange={handleChange}/>
+            <input type="password" name="password" value={password} onChange={handleChange}/>
         </form>
     )
 }
