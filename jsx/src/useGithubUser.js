@@ -9,6 +9,7 @@ export function useGithubUser(username){
     return {
         user: data,
         error,
-        isLoad: !data && !error
+        isLoad: !data && !error,
+        mutate
     }
 }
