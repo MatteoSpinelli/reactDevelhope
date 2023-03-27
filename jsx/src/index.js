@@ -3,6 +3,7 @@ import { counterState, decrementCounter, incrementCounter, resetCounter } from "
 import { store } from "./state/Store"
 import { App } from "./App"
 import { addUser, editUser, removeUser, usersState } from "./state/UsersState"
+import { delayAction } from "./state/delayAction"
 
 const root = createRoot(document.getElementById("root"))
 /* root.render(<App />) */
@@ -11,7 +12,7 @@ store.subscribe(() => {
     console.log(store.getState())
 })
 
-store.dispatch(counterState.actions.increment(5))
+store.dispatch(delayAction(counterState.actions.increment(5), 5000))
 store.dispatch(counterState.actions.decrement(3))
 store.dispatch(counterState.actions.decrement(6))
 store.dispatch(counterState.actions.reset())

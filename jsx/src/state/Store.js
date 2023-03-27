@@ -1,6 +1,8 @@
-import { legacy_createStore as createStore} from 'redux'
+import { applyMiddleware, legacy_createStore as createStore} from 'redux'
 import { combineReducers } from 'redux'
 import { counterState } from './CounterState'
+import { delayAction, delayActionMiddleware } from './delayAction'
+import { logginMiddleware } from './loggingMiddleware'
 import { usersState } from './UsersState'
 
 const rootReducer = combineReducers({
@@ -8,5 +10,5 @@ const rootReducer = combineReducers({
     users: usersState.reducer
 })
 
-export const store = createStore(rootReducer)
+export const store = createStore(rootReducer, applyMiddleware(logginMiddleware, delayActionMiddleware))
 
