@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loadingState, LoadingState } from "./LoadingState";
 
 export const usersState = createSlice({
     name: "users",
@@ -10,3 +11,18 @@ export const usersState = createSlice({
         clear: () => []
     }
 })
+
+export function fetchUser(username){
+    return async (dispatch, getState) => {
+        dispatch(loadingState.actions.increment())
+        try{
+            const res = await fetch(`https://api.github.com/users/${username}`)
+            const user = await res.json()
+            dispatch(usersState.actions.add({id: user.id, name: user.name, age: 102}))
+        } catch {
+            console.error("Error while fetching")
+        } finally {
+            dispatch(loadingState.actions.decrement())
+        }
+    }
+}
