@@ -1,17 +1,17 @@
-import { applyMiddleware, legacy_createStore as createStore} from 'redux'
-import { combineReducers } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
+import { composeWithDevTools } from '@redux-devtools/extension'
 import { counterState } from './CounterState'
-import { delayAction, delayActionMiddleware } from './delayAction'
+import { delayActionMiddleware } from './delayAction'
 import { loadingState } from './LoadingState'
 import { logginMiddleware } from './loggingMiddleware'
 import { thankMiddleware } from './thunkMiddleware'
 import { usersState } from './UsersState'
+import { errorState } from './errorState'
+import { pokemonState } from './pokemonState'
 
-const rootReducer = combineReducers({
-    counter: counterState.reducer,
-    users: usersState.reducer,
-    loading: loadingState.reducer
+export const store = configureStore({
+    reducer: {users: usersState.reducer, counter: counterState.reducer, loading: loadingState.reducer, error: errorState.reducer, pokemon: pokemonState.reducer},
+    middleware: [logginMiddleware, thankMiddleware, delayActionMiddleware],
+    devTools: composeWithDevTools
 })
-
-export const store = createStore(rootReducer, applyMiddleware(logginMiddleware, thankMiddleware ,delayActionMiddleware))
 
